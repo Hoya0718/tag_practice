@@ -12,7 +12,7 @@
             text-align: center;
             padding: 15px 0;
         }
-
+        <!-- -->
         #regform {
             padding: 15px 20px;
             border-radius: 10px;
@@ -21,13 +21,22 @@
             background-color: sandybrown;
         }
     </style>
+    <script>
+        function signUp() {
+            alert("정말로 가입하시겠습니까?");
+            document.getElementById("regform").style.display = "none";    
+            document.getElementById("rid").innerHTML = document.form1.id.value;
+            document.getElementById("rpw").innerHTML = document.form1.pw.value;
+            document.getElementById("result").setAttribute("style","display: black; background-color:KhaKi;");    
+        }
+    </script>
 </head>
 
 <body>
     <h2>회원가입</h2>
     <hr>
     <div id="regform">
-        <form name="form-1">
+        <form name="form1">
             <label for="id">아이디</label><br>
             <input type="text" id="id" name="user_id" placeholder="아이디 입력" size="40" /><br>
             <hr>
@@ -36,6 +45,15 @@
             <button type="button" onClick="signUp()">가입</button>
         </form>
     </div>
+    <div id="result" class="result">
+        <h3>가입 정보</h3>
+        <hr>
+        아이디: <span id="rid"></span><br>
+        비밀번호:<span id="rpw"></span><br>
+    </div>
+    <script>
+        document.getElementById("result").style.display = "none";
+    </script>
 </body>
 
 </html>
