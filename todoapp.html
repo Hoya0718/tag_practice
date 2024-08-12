@@ -13,12 +13,12 @@
             let list = document.getElementById("todolist");
             let listitem = document.createElement("li");
             listitem.className
-                ="d-flex list-group-item list-group-item-action list-group-item-warning";
+                = "d-flex list-group-item list-group-item-action list-group-item-warning";
             let xbtn = document.createElement("button");
 
             xbtn.className = "btn-close ms-auto";
 
-            xbtn.onclick = function(e) {
+            xbtn.onclick = function (e) {
                 let pnode = e.target.parentNode;
                 list.removeChild(pnode);
             }
@@ -28,6 +28,20 @@
             todo.value = "";
             todo.focus();
         }
+
+        function showText(e) {
+            if (e.key === "Enter") {
+                let todo = document.getElementById("item")
+                let list = document.getElementById("todolist");
+                let listitem = document.createElement("li");
+                listitem.className
+                    = "d-flex list-group-item list-group-item-action list-group-item-warning";
+                listitem.innerText = todo.value;
+                list.appendChild(listitem);
+                todo.value = "";
+                todo.focus();
+            }
+        }
     </script>
 </head>
 
@@ -36,7 +50,7 @@
         <h2>To-do</h2>
         <hr>
         <div class="input-group">
-            <input id="item" class="form-control" type="text" placeholder="할일을 입력하세요.">
+            <input id="item" class="form-control" onkeypress="showText(event)" type="text" placeholder="할일을 입력하세요.">
             <button type="button" class="btn btn-primary" onclick="addItem()">할일 추가</button>
         </div>
         <hr>
